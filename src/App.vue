@@ -2,7 +2,7 @@
 <div>
   <div id="header"></div>
   <div id="main-container">
-    <h2>Todos</h2>
+    <h2>Vue-Todo-App</h2>
     <TodoComponent v-bind:todoList="copyTodos"/>
   </div>
 </div>
@@ -49,15 +49,19 @@ export default {
 *{
   box-sizing: border-box;
 }
-body{
+html,body{
   font-family: Arial, Helvetica, sans-serif;
   font-size: 1.5em;
   padding: 0;
   margin: 0;
-  background-color: #424242;
+  background: linear-gradient(to bottom, #537895, rgb(0, 0, 0));
+  background-repeat: no-repeat;
+  color:white;
+  height: 100%;
+ 
 }
 #main-container{
-  background-color: white;
+  background: linear-gradient(to bottom, #FF5F6D, #FFC371 );
   width: 70vw;
   margin: 100px auto;
   border: 10px solid #f2f2f2;

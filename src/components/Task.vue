@@ -1,7 +1,7 @@
 <template>
-  <div class="container">
-    <div class="todo-body" v-bind:class="{completed:todo.completed}">
-        <input type="checkbox" v-bind:checked="todo.completed ? 'checked' : ''">
+  <div class="container">       
+    <div class="todo-body"   v-bind:class="{completed:todo.completed}">
+         <input type="checkbox" v-bind:checked="todo.completed ? 'checked' : ''">
         {{todo.title}}
     </div>
     <div class="todo-actions">
@@ -19,21 +19,8 @@ export default {
 </script>
 
 <style scoped>
-.todo{
-        border-bottom: solid 1px #ccc;
-        padding: 10px;
-    }
-
-    .todo:not(.completed):hover{
-        background-color:#424242 ;
-    }
-
-    .completed{
-        color: #ccc;
-        text-decoration: line-through;
-    }
-
-    .completed .todo-body{
+     .completed{
+        background-color: #009245;
         text-decoration: line-through;
     }
     .container{
@@ -41,7 +28,13 @@ export default {
         flex-direction: row;
         padding: 0.2em 0;
         overflow: hidden;
-        padding: 3px 15px;
+        padding: 10px 15px;
+        flood-opacity: 30%;
+        border-radius: 10px;
+        background-color: #333;
+        border:2px solid white;
+        margin: 0.3em 0;
+        
     }
 
     .todo-actions{
@@ -49,25 +42,30 @@ export default {
         flex-direction: row;
     }
     .todo-body{
-        width: 85%;
+        width: 100%;
+        border-radius: 10px;
+        margin-right: 20px;
+    }
+    .todo-body:not(.completed){
+        background-color: #724696;
     }
 
     button{
         margin: 0 2px;
+        font-size: xx-large;
     }
     
     #delete-button{
-        padding: 8px 12px;
-        background-color: #f35;
+        padding: 0.2em 0.75em;
+        background: linear-gradient(to bottom, #FF512F , #DD2476);
         color: whitesmoke;
         border-radius: 500px;
         border: 2px solid #fff;
         cursor: pointer;
-
-        transition-duration: 700ms;
+        transition-duration: 200ms;
     }
     #delete-button:hover{
-        background-color: #333333;
+        background: #333333;
         color: rgb(255, 135, 135);
         border: 2px solid #f35
     }
@@ -75,20 +73,19 @@ export default {
     #delete-button:active{
         transition-duration: 100ms;
         scale: 1.1;
-        background-color: #dfdfdf;
+        background-color: #a5a5a5;
     }
     #edit-button{
-        padding: 8px 12px;
-        background-color: rgb(44, 181, 99);
+        padding: 0.2em 0.75em;
+        background: linear-gradient(to bottom ,#FCEE21,#009245);
         color: whitesmoke;
         border-radius: 500px;
         border: 2px solid #fff;
         cursor: pointer;
-
-        transition-duration: 700ms;
+        transition-duration: 200ms;
     }
     #edit-button:hover{
-        background-color: #333333;
+        background: #333333;
         color: rgb(135, 255, 197);
         border: 2px solid rgb(44, 181, 99);
     }
@@ -96,9 +93,9 @@ export default {
     #edit-button:active{
         transition-duration: 100ms;
         scale: 1.1;
-        background-color: #dfdfdf;
+        background-color: #a5a5a5;
     }
-
+    
 
 
 </style>
