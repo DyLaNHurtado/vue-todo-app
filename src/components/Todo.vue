@@ -3,7 +3,6 @@
     Todo
     <div class="bar">
         <SearchComponent/>
-        <AddComponent/>
     </div>
     <div v-bind:key="todo.id" v-for="todo in todoList">
         <TaskComponent v-bind:todo="todo" />
@@ -13,14 +12,13 @@
 
 <script>
 import TaskComponent from './Task.vue';
-import AddComponent from './Add.vue'
 import SearchComponent from './Search.vue'
 export default {
     name: "TodoComponent",
     props: {
         todoList: []
     },
-    components: { TaskComponent,SearchComponent,AddComponent }
+    components: { TaskComponent,SearchComponent }
 }
 </script>
 

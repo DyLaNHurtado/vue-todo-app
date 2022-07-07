@@ -66,7 +66,7 @@ html,body{
   margin: 100px auto;
   border: 10px solid #f2f2f2;
   border-radius: 50px;
-  box-shadow: 1px 1px 2px 2px rgb(0, 0, 0);
+  box-shadow: 2px 2px 2px 2px rgb(0, 0, 0);
   padding: 30px 15px;
 }
 #header{

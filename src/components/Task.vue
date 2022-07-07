@@ -1,8 +1,8 @@
 <template>
   <div class="container">       
-    <div class="todo-body"   v-bind:class="{completed:todo.completed}">
-         <input type="checkbox" v-bind:checked="todo.completed ? 'checked' : ''">
-        {{todo.title}}
+    <div class="todo-body" v-bind:class="{completed:todo.completed}">
+         <input type="checkbox" id="checkbox" v-bind:checked="todo.completed? 'checked':''">
+        <span>{{todo.title}}</span>
     </div>
     <div class="todo-actions">
         <button id="edit-button">Editar</button>
@@ -20,8 +20,9 @@ export default {
 
 <style scoped>
      .completed{
-        background-color: #009245;
+        background-color: #3ed461;
         text-decoration: line-through;
+        border: 3px solid #414141;
     }
     .container{
         display: flex;
@@ -41,13 +42,17 @@ export default {
         display: flex;
         flex-direction: row;
     }
+    
     .todo-body{
         width: 100%;
         border-radius: 10px;
         margin-right: 20px;
+        box-sizing: border-box;
+        padding: 5px;
     }
     .todo-body:not(.completed){
-        background-color: #724696;
+        background-color: #ff8248;
+        border: 3px solid #414141;
     }
 
     button{
@@ -95,7 +100,9 @@ export default {
         scale: 1.1;
         background-color: #a5a5a5;
     }
-    
-
-
+    #checkbox{
+        margin: 2% 3%;
+        scale: 2;
+        margin-bottom: 3%;
+    }
 </style>
