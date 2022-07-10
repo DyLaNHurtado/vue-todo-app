@@ -1,6 +1,5 @@
 <template>
   <div class="container">
-    Todo
     <div class="bar">
         <SearchComponent/>
     </div>

@@ -1,7 +1,7 @@
 <template>
   <div class="container">       
-    <div class="todo-body" v-bind:class="{completed:todo.completed}">
-         <input type="checkbox" id="checkbox" v-bind:checked="todo.completed? 'checked':''">
+    <div class="todo-body checkbox" @click="completeTask(todo)" v-bind:class="{completed:todo.completed}" v-bind:checked="todo.completed">
+        <input type="checkbox" name="check" v-bind:checked="todo.completed" id="checkbox">
         <span>{{todo.title}}</span>
     </div>
     <div class="todo-actions">
@@ -13,6 +13,12 @@
 
 <script>
 export default {
+    methods:{
+        completeTask: function(task){
+            task.isChecked = !task.isChecked
+            task.completed= !task.completed;
+    }
+    },
   name: 'TaskComponent',
   props: ['todo']
 }
@@ -51,7 +57,7 @@ export default {
         padding: 5px;
     }
     .todo-body:not(.completed){
-        background-color: #ff8248;
+        background-color: #306ae8;
         border: 3px solid #414141;
     }
 
@@ -104,5 +110,8 @@ export default {
         margin: 2% 3%;
         scale: 2;
         margin-bottom: 3%;
+    }
+    span{
+        user-select: none;
     }
 </style>
