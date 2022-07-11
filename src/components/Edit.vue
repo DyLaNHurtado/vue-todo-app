@@ -1,24 +1,42 @@
 <template>
-  <div class="container">
+  <div id="container-edit" @open-edit="openEdit()">
         <h3>✏️ Edit</h3>
         <div id="input-container">
-            <input type="text" class="edit" />
-            <button id="ok-button">Ok</button>
+            <input type="text" id="edit" v-model="editInput" />
+            <button id="ok-button" @click="closeEdit(editInput)">Ok</button>
         </div>
-        
   </div>
 </template>
 
 <script>
 export default {
+        data() {
+        return {
+        editInput:"",
+        }
+    },
     name: "EditComponent",
     props: ['todo'],
-    methods:{}
+    methods:{
+        closeEdit(editInput){
+            this.$emit('closeEdit',editInput);
+            const edit = document.getElementById('edit');
+            console.log(edit.value);
+            edit.value="";
+            console.log(edit.value);
+            const dialog = document.getElementById('container-edit');
+            dialog.style="display:none"
+        },
+        openEdit(){
+            const dialog = document.getElementById('container-edit');
+            dialog.style="display:flex"
+        }
+    }
 }
 </script>
 
 <style scoped>
-    .edit{
+    #edit{
         padding: 1em;
         border-radius: 10px;
         font-size: x-large;
@@ -26,7 +44,7 @@ export default {
         margin: 0 1em;
         width: 100%;
     }
-    .edit:focus{
+    #edit:focus{
         border:4px solid rgb(246, 171, 95);
     }
     #ok-button{
@@ -36,15 +54,19 @@ export default {
         border: 4px solid transparent;
         margin: 0;
         border-radius: 100px;
-        border:0;
     }
     #ok-button:hover{
-        border:4px solid greenyellow;
-        background-color: black;
-
+        transition: all;
+        transition-duration: 400ms;
+        border:4px solid rgb(255, 134, 34);
+        background-color: rgb(255, 210, 137);
     }
-    .container{
-        display: flex;
+    #ok-button:active{
+        border:4px solid rgb(0, 0, 0);
+        background-color: rgb(255, 232, 196);
+        scale: 1.1;
+    }
+    #container-edit{
         flex-direction: column;
         padding: 0.2em 0;
         overflow: hidden;

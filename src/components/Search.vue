@@ -20,6 +20,8 @@ export default {
     addTodo:(todoList,inputSearch) => {
       if(inputSearch.trim()!='' ){
         todoList.push({id:todoList.length,title:inputSearch,completed:false });
+        const search = document.getElementById('search');
+        search.value='';
       }else{
         alert(' ⛔ Error : Empty name invalid  ⛔ ')
       }
@@ -44,7 +46,6 @@ export default {
   transition-duration: 900ms;
   transition-delay: 0ms;
   background-color: #fff4af;
-
   border: 0;
   outline: none;
 }
@@ -70,15 +71,12 @@ export default {
   background: linear-gradient(to bottom ,#030a31,#564b6e);
   transition: all;
   transition-duration: 500ms;
-
 }
 
 #add-button:active{
   background: linear-gradient(to bottom ,#4f5263,#827e8c);
   transition: all;
   transition-duration: 200ms;
-  transition-delay: 0ms;
-
   scale: 1.1;
   border:0;
 }

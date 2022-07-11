@@ -1,5 +1,5 @@
 <template>
-  <div class="container">       
+  <div class="container" v-on:close-edit="(d)=>alert(d)">       
     <div class="todo-body checkbox" @click="completeTask(todo)" v-bind:class="{completed:todo.completed}" v-bind:checked="todo.completed">
         <input type="checkbox" name="check" v-bind:checked="todo.completed" id="checkbox">
         <span>{{todo.title}}</span>
@@ -26,10 +26,13 @@ export default {
         },
         editTask: function(todoList,task){
             task.title="Holaa"
+            this.$emit('openEdit',todoList.indexOf(task));
+            console.log(this);
         },
     },
-  name: 'TaskComponent',
-  props: ['todo','todoList']
+    name: 'TaskComponent',
+    props: ['todo','todoList'],
+
 }
 </script>
 

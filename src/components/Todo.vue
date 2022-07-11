@@ -19,7 +19,7 @@ export default {
     props: {
         todoList: []
     },
-    components: { TaskComponent,SearchComponent,EditComponent }
+    components: { TaskComponent,SearchComponent,EditComponent } 
 }
 </script>
 
