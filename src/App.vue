@@ -1,11 +1,12 @@
 <template>
-<div>
-  <div id="header"></div>
-  <div id="main-container">
+  <div id="header">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/95/Vue.js_Logo_2.svg/512px-Vue.js_Logo_2.svg.png?20170919082558" alt=""/>
+    <span>Made with 💚 by <a href="https://github.com/DyLaNHurtado" target="_blank"> DyLaNHurtado</a></span> 
+  </div>
+  <div id="main-container"> 
     <h2>Vue-Todo-App</h2>
     <TodoComponent v-bind:todoList="copyTodos"/>
   </div>
-</div>
 </template>
 
 <script>
@@ -39,7 +40,7 @@ export default {
     }
   },
   created(){
-    this.copyTodos = [... this.todos]
+    this.copyTodos =  this.todos;
   }
 }
 </script>
@@ -54,7 +55,7 @@ html,body{
   font-size: 1.5em;
   padding: 0;
   margin: 0;
-  background: linear-gradient(to bottom, #537895, rgb(0, 0, 0));
+  background: linear-gradient(to bottom, #3d749e, rgba(248, 248, 248, 0.857));
   background-repeat: no-repeat;
   color:white;
   height: 100%;
@@ -71,11 +72,30 @@ html,body{
 }
 #header{
   background: #323232;
-  padding: 10px;
+  padding: 2vh;
+  display:flex;
+  align-items: center;
+  justify-content: space-evenly;
 }
 
 h2{
   padding: 0 10px;
   text-align: center;
+}
+img{
+  position: absolute;
+  top: 0.3em;
+  left: 0.3em;
+  height: 7vh;
+}
+a{
+  color:rgb(255, 191, 88);
+  text-decoration: none;
+  transition: all;
+  transition-duration: 500ms;
+}
+a:hover{
+  color:rgb(144, 185, 255);
+  text-decoration: none;
 }
 </style>

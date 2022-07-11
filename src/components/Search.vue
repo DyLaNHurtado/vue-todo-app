@@ -1,16 +1,31 @@
 <template>
     <div id="search-container">
-        <input type="text" name="search" id="search" placeholder="Enter task to do..."/>
-        <button id="add-button">Add</button>
+        <input type="text" name="search" id="search" v-model="inputSearch" placeholder="Enter task to do..."/>
+        <button id="add-button" @click="addTodo(this.$props.todoList,inputSearch)">Add</button>
     </div>
 </template>
 
 <script>
 export default {
+  data() {
+    return {
+      inputSearch:"",
+    }
+  },
   name: 'SearchComponent',
   props: {
-
-  }
+    todoList: [],
+  },
+  methods:{
+    addTodo:(todoList,inputSearch) => {
+      console.log(todoList.includes(inputSearch), todoList ,inputSearch);
+      if(inputSearch.trim()!='' ){
+        todoList.push({id:todoList.length,title:inputSearch,completed:false });
+      }else{
+        alert(' ⛔ Error : Empty name invalid or task already in Todo list! ⛔ ')
+      }
+    }
+  },
 }
 </script>
 
@@ -41,24 +56,31 @@ export default {
   border-radius: 100px;
   border-bottom-left-radius: 0px;
   border-top-left-radius: 0px;
-  background: linear-gradient(to bottom ,#ffe520,#ff9501);
+  border-left: 5px solid #424242;
+  background: linear-gradient(to bottom ,#ffe520,#ff5a01);
   cursor: pointer;
   color:white;
   width: 40%;
   font-size: large;
+  transition: all;
+  transition-duration: 1300ms;
 }
 
 #add-button:hover{
-  background: linear-gradient(to bottom ,#69710c,#7e4b04);
-    -webkit-transition: background-color 1000ms linear;
-    -ms-transition: background-color 1000ms linear;
-    transition: background-color 1000ms linear;
+  background: linear-gradient(to bottom ,#030a31,#564b6e);
+  transition: all;
+  transition-duration: 500ms;
+
 }
 
 #add-button:active{
-  background: linear-gradient(to bottom ,#f4ff78,#ffac39);
+  background: linear-gradient(to bottom ,#4f5263,#827e8c);
   transition: all;
   transition-duration: 200ms;
+  transition-delay: 0ms;
+
+  scale: 1.1;
+  border:0;
 }
 #search-container{
   width: 100%;

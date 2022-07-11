@@ -1,7 +1,7 @@
 <template>
   <div class="container">
     <div class="bar">
-        <SearchComponent/>
+        <SearchComponent v-bind:todoList="todoList"/>
     </div>
     <div v-bind:key="todo.id" v-for="todo in todoList">
         <TaskComponent v-bind:todo="todo" />

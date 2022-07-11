@@ -26,7 +26,8 @@ export default {
 
 <style scoped>
      .completed{
-        background-color: #3ed461;
+        background-color: #cdcdcd;
+        color:#999;
         text-decoration: line-through;
         border: 3px solid #414141;
     }
@@ -54,10 +55,12 @@ export default {
         border-radius: 10px;
         margin-right: 20px;
         box-sizing: border-box;
-        padding: 5px;
+        padding: 0.5em 0.5em;
     }
     .todo-body:not(.completed){
-        background-color: #306ae8;
+        background-color: white;
+        color:#333;
+        font-weight: bolder;
         border: 3px solid #414141;
     }
 
