@@ -68,7 +68,7 @@ html,body{
   border: 10px solid #f2f2f2;
   border-radius: 50px;
   box-shadow: 2px 2px 2px 2px rgb(0, 0, 0);
-  padding: 30px 15px;
+  padding: 4vw 4vw;
 }
 #header{
   background: #323232;
@@ -76,6 +76,10 @@ html,body{
   display:flex;
   align-items: center;
   justify-content: space-evenly;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
 }
 
 h2{

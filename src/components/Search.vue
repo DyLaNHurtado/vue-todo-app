@@ -18,11 +18,10 @@ export default {
   },
   methods:{
     addTodo:(todoList,inputSearch) => {
-      console.log(todoList.includes(inputSearch), todoList ,inputSearch);
       if(inputSearch.trim()!='' ){
         todoList.push({id:todoList.length,title:inputSearch,completed:false });
       }else{
-        alert(' ⛔ Error : Empty name invalid or task already in Todo list! ⛔ ')
+        alert(' ⛔ Error : Empty name invalid  ⛔ ')
       }
     }
   },
@@ -42,9 +41,10 @@ export default {
 
 #search:focus{
   transition: all;
-  transition-duration: 500ms;
-  background-color: #00194f;
-  color:white;
+  transition-duration: 900ms;
+  transition-delay: 0ms;
+  background-color: #fff4af;
+
   border: 0;
   outline: none;
 }

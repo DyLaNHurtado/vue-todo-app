@@ -5,8 +5,8 @@
         <span>{{todo.title}}</span>
     </div>
     <div class="todo-actions">
-        <button id="edit-button">Editar</button>
-        <button id="delete-button">Eliminar</button>
+        <button id="edit-button" @click="editTask(todoList,todo)">Editar</button>
+        <button id="delete-button" @click="deleteTask(todoList,todo)">Eliminar</button>
     </div>
   </div>
 </template>
@@ -17,10 +17,19 @@ export default {
         completeTask: function(task){
             task.isChecked = !task.isChecked
             task.completed= !task.completed;
-    }
+        },
+        deleteTask: function(todoList,task){
+            const index = todoList.indexOf(task);
+            if(index!=-1){
+                todoList.splice(index,1);
+            }
+        },
+        editTask: function(todoList,task){
+            task.title="Holaa"
+        },
     },
   name: 'TaskComponent',
-  props: ['todo']
+  props: ['todo','todoList']
 }
 </script>
 
@@ -44,7 +53,6 @@ export default {
         margin: 0.3em 0;
         
     }
-
     .todo-actions{
         display: flex;
         flex-direction: row;
@@ -117,4 +125,5 @@ export default {
     span{
         user-select: none;
     }
+
 </style>
