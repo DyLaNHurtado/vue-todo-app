@@ -1,11 +1,11 @@
 <template>
-    <EditComponent v-bind:todo="todo"/>
+    <EditComponent v-bind:todo="todo" :editStatus="false" @closeEdit="close()"/>
     <div class="container">
         <div class="bar">
             <SearchComponent v-bind:todoList="todoList"/>
         </div>
     <div v-bind:key="todo.id" v-for="todo in todoList">
-        <TaskComponent v-bind:todo="todo" v-bind:todoList="todoList" />
+        <TaskComponent v-bind:todo="todo" @openEditTask="open(todo.title)"  v-bind:todoList="todoList"/>
     </div>
   </div>
 </template>
@@ -17,9 +17,20 @@ import EditComponent from './Edit.vue'
 export default {
     name: "TodoComponent",
     props: {
-        todoList: []
+        todoList: [],
+        editStatus: Boolean,
     },
-    components: { TaskComponent,SearchComponent,EditComponent } 
+    emits:['openEdit'],
+    components: { TaskComponent,SearchComponent,EditComponent },
+    setup(){
+        const close = (param)=>{
+            console.log(param);
+        }
+        const open = (param)=>{
+            console.log("dasd",param);
+        }
+        return {close, open}
+    }
 }
 </script>
 

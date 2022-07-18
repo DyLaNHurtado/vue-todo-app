@@ -13,25 +13,34 @@
 
 <script>
 export default {
-    methods:{
-        completeTask: function(task){
+    name: 'TaskComponent',
+    props: {
+        todo: {
+        type: Object,
+        required: true
+        },
+        todoList:{
+            type: [],
+            required: true
+        }
+    },
+  emits: ['openEditTask'],
+  setup (props, { emit }) {
+    const completeTask = (task) => {
             task.isChecked = !task.isChecked
             task.completed= !task.completed;
-        },
-        deleteTask: function(todoList,task){
-            const index = todoList.indexOf(task);
-            if(index!=-1){
-                todoList.splice(index,1);
-            }
-        },
-        editTask: function(todoList,task){
-            task.title="Holaa"
-            this.$emit('openEdit',todoList.indexOf(task));
-            console.log(this);
-        },
-    },
-    name: 'TaskComponent',
-    props: ['todo','todoList'],
+        }
+    const deleteTask = (todoList,task) => {
+        const index = todoList.indexOf(task);
+        if(index!=-1){
+            todoList.splice(index,1);
+        }
+    }
+    const editTask = (todoList,task) => {
+        emit('openEditTask',todoList.indexOf(task));
+    }
+    return {completeTask,deleteTask,editTask}
+}
 
 }
 </script>

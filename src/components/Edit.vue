@@ -1,5 +1,6 @@
+<!-- eslint-disable vue/no-mutating-props -->
 <template>
-  <div id="container-edit" @open-edit="openEdit()">
+  <div id="container-edit" @open-edit="openEdit(d)">
         <h3>✏️ Edit</h3>
         <div id="input-container">
             <input type="text" id="edit" v-model="editInput" />
@@ -10,28 +11,36 @@
 
 <script>
 export default {
-        data() {
-        return {
-        editInput:"",
+    name: "EditComponent",
+    props: {
+        todo: {
+        type: Object,
+        required: true
+        },
+        editInput:{
+            type: String,
+            required: true
         }
     },
-    name: "EditComponent",
-    props: ['todo'],
-    methods:{
-        closeEdit(editInput){
-            this.$emit('closeEdit',editInput);
+  emits: ['closeEdit'],
+  setup (props, { emit }) {
+    const closeEdit = () => {
             const edit = document.getElementById('edit');
             console.log(edit.value);
             edit.value="";
             console.log(edit.value);
             const dialog = document.getElementById('container-edit');
             dialog.style="display:none"
-        },
-        openEdit(){
-            const dialog = document.getElementById('container-edit');
-            dialog.style="display:flex"
+            emit('closeEdit',edit.value);
         }
-    }
+        const openEdit = (d) =>{
+            const dialog = document.getElementById('container-edit');
+            dialog.style="display:flex";
+            console.log(d);
+        }
+    return {closeEdit,openEdit}
+}
+
 }
 </script>
 
