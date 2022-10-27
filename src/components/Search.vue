@@ -45,7 +45,7 @@ export default {
   transition: all;
   transition-duration: 900ms;
   transition-delay: 0ms;
-  background-color: #ccc;
+  background-color: rgb(225, 250, 227);
   border: 0;
   outline: none;
 }

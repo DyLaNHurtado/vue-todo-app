@@ -63,12 +63,11 @@ html{
   width: 70vw;
   margin: 100px auto;
   border: 4px solid #e2e2e2;
-  border-radius: 50px;
   padding: 4vw 4vw;
   height: 100%;
 }
 #header{
-  background: #323232;
+  background-color: #323232;
   padding: 2vh;
   display:flex;
   align-items: center;

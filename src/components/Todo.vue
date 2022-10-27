@@ -1,5 +1,5 @@
 <template>
-    <EditComponent v-bind:todo="todo" :editStatus="false" @closeEdit="close()"/>
+    <EditComponent v-if="onEdit" :inputValue="inputValue" @closeEdit="close"/>
     <div class="container">
         <div class="bar">
             <SearchComponent v-bind:todoList="todoList"/>
@@ -16,21 +16,25 @@ import SearchComponent from './Search.vue'
 import EditComponent from './Edit.vue'
 export default {
     name: "TodoComponent",
+    data(){
+        return{onEdit:false,inputValue:""}
+    },
     props: {
         todoList: [],
-        editStatus: Boolean,
     },
     emits:['openEdit'],
     components: { TaskComponent,SearchComponent,EditComponent },
-    setup(){
-        const close = (param)=>{
-            console.log(param);
+    methods:{
+        close(dataValue){
+            console.log(dataValue);
+            this.onEdit= false;
+        },
+        open(param){
+            this.onEdit = true;
+            console.log(param+"holaaa");
+            this.inputValue = param;
         }
-        const open = (param)=>{
-            console.log("dasd",param);
-        }
-        return {close, open}
-    }
+    }       
 }
 </script>
 

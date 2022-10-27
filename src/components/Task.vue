@@ -62,7 +62,7 @@ export default {
         padding-left: 0.5em;
         flood-opacity: 30%;
         border-bottom:2px solid #c2c2c2;
-        margin: 0.3em 0;
+        padding: 0.3em 0;
     }
     .todo-actions{
         display: flex;

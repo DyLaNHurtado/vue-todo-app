@@ -1,10 +1,9 @@
-<!-- eslint-disable vue/no-mutating-props -->
 <template>
-  <div id="container-edit" @open-edit="openEdit(d)">
+  <div id="container-edit">
         <h3>✏️ Edit</h3>
         <div id="input-container">
-            <input type="text" id="edit" v-model="editInput" />
-            <button id="ok-button" @click="closeEdit(editInput)">Ok</button>
+            <input type="text" id="edit" v-model="dataValue" />
+            <button id="ok-button" @click="$emit('closeEdit',dataValue)">Ok</button>
         </div>
   </div>
 </template>
@@ -13,33 +12,17 @@
 export default {
     name: "EditComponent",
     props: {
-        todo: {
-        type: Object,
-        required: true
-        },
-        editInput:{
-            type: String,
-            required: true
-        }
+        onEdit:{type:Boolean},
+        inputValue:{type:String},
+    },
+    data () {
+    return {
+        dataValue: this.inputValue
+    }},
+    mounted(){
+        console.log(this.dataValue );
     },
   emits: ['closeEdit'],
-  setup (props, { emit }) {
-    const closeEdit = () => {
-            const edit = document.getElementById('edit');
-            console.log(edit.value);
-            edit.value="";
-            console.log(edit.value);
-            const dialog = document.getElementById('container-edit');
-            dialog.style="display:none"
-            emit('closeEdit',edit.value);
-        }
-        const openEdit = (d) =>{
-            const dialog = document.getElementById('container-edit');
-            dialog.style="display:flex";
-            console.log(d);
-        }
-    return {closeEdit,openEdit}
-}
 
 }
 </script>
