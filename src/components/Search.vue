@@ -52,7 +52,7 @@ export default {
 
 #add-button{
   border:0;
-  padding: 2em;
+  padding: 1.5em 3em;
   font-weight: bold;
   background: #b9b9b9;
   cursor: pointer;
