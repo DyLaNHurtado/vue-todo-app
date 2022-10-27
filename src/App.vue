@@ -80,7 +80,7 @@ html{
   height: 100%;
 }
 #footer{
-  background-color: #323232;
+  background-color: #3232325b;
   padding: 2vh;
   display:flex;
   align-items: center;
@@ -90,6 +90,10 @@ html{
   left: 0;
   width: 100%;
   z-index: 5;
+}
+#footer:hover{
+  background-color: #323232;
+
 }
 
 h2{
