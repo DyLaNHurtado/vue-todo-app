@@ -23,7 +23,7 @@ export default {
     data(){
         return{onEdit:false,inputValue:"",index:0,editTodoList:this.todoList}
     },
-    emits:['openEdit'],
+    emits:['openEdit','turnLightsOn','turnLightsOff'],
     components: { TaskComponent,SearchComponent,EditComponent },
     methods:{
         cancel(){
@@ -41,7 +41,7 @@ export default {
             this.$emit('turnLightsOff');
             this.inputValue = title;
         }
-    }       
+    }     
 }
 </script>
 

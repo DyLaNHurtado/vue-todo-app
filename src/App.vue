@@ -4,9 +4,10 @@
     <h2>Vue-Todo-App</h2>
     <TodoComponent  :todoList="todos" @turnLightsOff="changeDarkBg" @turnLightsOn="changeDarkBg"/>
   </div>
-  <div id="header">
-    <span>Made with 💚 by <a href="https://github.com/DyLaNHurtado" target="_blank"> DyLaNHurtado</a></span> 
-  </div>
+  <a href="https://github.com/DyLaNHurtado" target="_blank">
+  <div id="footer">
+    <span>Made with 💚 by  DyLaNHurtado</span> 
+  </div></a>
 </template>
 
 <script>
@@ -42,7 +43,7 @@ export default {
     changeDarkBg(){
       this.islightsOn = !this.islightsOn;
     }
-  }
+  },  
 }
 </script>
 
@@ -78,7 +79,7 @@ html{
   padding: 4vw 4vw;
   height: 100%;
 }
-#header{
+#footer{
   background-color: #323232;
   padding: 2vh;
   display:flex;
@@ -88,22 +89,23 @@ html{
   bottom: 0;
   left: 0;
   width: 100%;
+  z-index: 5;
 }
 
 h2{
   padding: 10px 10px;
   text-align: center;
   font-size: 2em;
-  color:rgb(101, 175, 98);
+  color:rgb(125, 202, 122);
 }
 a{
-  color:rgb(255, 191, 88);
+  color:whitesmoke;
   text-decoration: none;
   transition: all;
   transition-duration: 500ms;
 }
 a:hover{
-  color:rgb(144, 185, 255);
+  color:rgb(125, 202, 122);
   text-decoration: none;
 }
 </style>
