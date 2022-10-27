@@ -1,6 +1,6 @@
 <template>
     <EditComponent v-if="onEdit" :inputValue="inputValue" @closeEdit="close"/>
-    <div class="container">
+    <div class="container"  @keydown.esc="cancel">
         <div class="bar">
             <SearchComponent :todoList="todoList"/>
         </div>
@@ -26,6 +26,10 @@ export default {
     emits:['openEdit'],
     components: { TaskComponent,SearchComponent,EditComponent },
     methods:{
+        cancel(){
+            this.onEdit= false;
+            this.$emit('turnLightsOn');
+        },
         close(newTitle){
             this.editTodoList[this.index].title=newTitle;
             this.onEdit= false;

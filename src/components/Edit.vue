@@ -1,5 +1,5 @@
 <template>
-  <div id="container-edit">
+  <div id="container-edit" @keydown.esc="$emit('closeEdit',inputValue)">
         <h3>✏️ Edit</h3>
         <div id="input-container">
             <input type="text" id="edit" v-model="dataValue" />
