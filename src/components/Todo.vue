@@ -37,8 +37,8 @@ export default {
 <style scoped>
     .bar{
         width: 100%;
-        padding: 2px;
         display: flex;
         flex-direction: row;
+        border-bottom: 2px solid #c2c2c2;
     }
 </style>

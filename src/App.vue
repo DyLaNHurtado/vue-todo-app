@@ -1,11 +1,11 @@
 <template>
-  <div id="header">
-    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/95/Vue.js_Logo_2.svg/512px-Vue.js_Logo_2.svg.png?20170919082558" alt=""/>
-    <span>Made with 💚 by <a href="https://github.com/DyLaNHurtado" target="_blank"> DyLaNHurtado</a></span> 
-  </div>
+  
   <div id="main-container"> 
     <h2>Vue-Todo-App</h2>
     <TodoComponent v-bind:todoList="copyTodos"/>
+  </div>
+  <div id="header">
+    <span>Made with 💚 by <a href="https://github.com/DyLaNHurtado" target="_blank"> DyLaNHurtado</a></span> 
   </div>
 </template>
 
@@ -47,28 +47,25 @@ export default {
 
 <style>
 
-*{
-  box-sizing: border-box;
-}
-html,body{
-  font-family: Arial, Helvetica, sans-serif;
-  font-size: 1.5em;
+
+html{
+  font-family: Arial, Helvetica, sans-serif;  
   padding: 0;
   margin: 0;
-  background: linear-gradient(to bottom, #3d749e, rgba(248, 248, 248, 0.857));
+  background: linear-gradient(to top, #797878, rgba(248, 248, 248, 0.857));
   background-repeat: no-repeat;
   color:white;
-  height: 100%;
+  min-height: 100%;
  
 }
 #main-container{
-  background: linear-gradient(to bottom, #FF5F6D, #FFC371 );
+  background: #f2f2f2;
   width: 70vw;
   margin: 100px auto;
-  border: 10px solid #f2f2f2;
+  border: 4px solid #e2e2e2;
   border-radius: 50px;
-  box-shadow: 2px 2px 2px 2px rgb(0, 0, 0);
   padding: 4vw 4vw;
+  height: 100%;
 }
 #header{
   background: #323232;
@@ -77,20 +74,16 @@ html,body{
   align-items: center;
   justify-content: space-evenly;
   position: fixed;
-  top: 0;
+  bottom: 0;
   left: 0;
   width: 100%;
 }
 
 h2{
-  padding: 0 10px;
+  padding: 10px 10px;
   text-align: center;
-}
-img{
-  position: absolute;
-  top: 0.3em;
-  left: 0.3em;
-  height: 7vh;
+  font-size: 2em;
+  color:rgb(101, 175, 98);
 }
 a{
   color:rgb(255, 191, 88);

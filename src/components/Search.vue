@@ -1,11 +1,12 @@
 <template>
     <div id="search-container">
         <input type="text" name="search" id="search" v-model="inputSearch" placeholder="Enter task to do..."/>
-        <button id="add-button" @click="addTodo(this.$props.todoList,inputSearch)">Add</button>
+        <button id="add-button" @click="addTodo(this.$props.todoList,inputSearch)"><AddIcon/></button>
     </div>
 </template>
 
 <script>
+import AddIcon from '@/assets/icons/AddIcon.vue';
 export default {
   data() {
     return {
@@ -13,6 +14,9 @@ export default {
     }
   },
   name: 'SearchComponent',
+  components: {
+        AddIcon,
+  },
   props: {
     todoList: [],
   },
@@ -32,43 +36,35 @@ export default {
 
 <style scoped>
 #search{
-  padding: 1.5em 2em;
-  border-radius: 100px;
-  border-bottom-right-radius: 0px;
-  border-top-right-radius: 0px;
-  border:0;
-  width: 90%;
-  font-size: large;
+  padding: 1em 1em;
+  border: 0;
+  width: 100%;
 }
 
 #search:focus{
   transition: all;
   transition-duration: 900ms;
   transition-delay: 0ms;
-  background-color: #fff4af;
+  background-color: #ccc;
   border: 0;
   outline: none;
 }
 
 #add-button{
   border:0;
-  padding: 2em 1.5em ;
+  padding: 2em;
   font-weight: bold;
-  border-radius: 100px;
-  border-bottom-left-radius: 0px;
-  border-top-left-radius: 0px;
-  border-left: 5px solid #424242;
-  background: linear-gradient(to bottom ,#ffe520,#ff5a01);
+  background: #b9b9b9;
   cursor: pointer;
   color:white;
-  width: 40%;
-  font-size: large;
+  fill: rgb(29, 29, 29);
   transition: all;
-  transition-duration: 1300ms;
+  transition-duration: 1000ms;
 }
 
 #add-button:hover{
-  background: linear-gradient(to bottom ,#030a31,#564b6e);
+  background-color: #333333;
+  fill: rgb(67, 184, 104);
   transition: all;
   transition-duration: 500ms;
 }
@@ -84,7 +80,5 @@ export default {
   width: 100%;
   display: flex;
   flex-direction: row;
-  border: 4px solid #424242;
-  border-radius: 100px;
 }
 </style>
