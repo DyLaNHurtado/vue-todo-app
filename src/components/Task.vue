@@ -76,7 +76,7 @@ export default {
         padding-left: 0.5em;
         flood-opacity: 30%;
         border-bottom:1px solid #d6d6d6;
-        padding: 0.3em 0;
+        padding: 0.3em 0.3em 0.3em 0;
         position: relative;
         z-index: 2;
         -webkit-transition: all .1s;
@@ -137,6 +137,7 @@ export default {
     #edit-button{
         background: #65b88c;
         border: 2px solid #c2c2c2;
+        padding: 10px 35px;
         cursor: pointer;
         transition-duration: 200ms;
     }
