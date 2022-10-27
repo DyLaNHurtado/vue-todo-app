@@ -1,8 +1,8 @@
 <template>
-  
+  <div id="bg-dark" v-if="islightsOn"></div>
   <div id="main-container"> 
     <h2>Vue-Todo-App</h2>
-    <TodoComponent  :todoList="todos"/>
+    <TodoComponent  :todoList="todos" @turnLightsOff="changeDarkBg" @turnLightsOn="changeDarkBg"/>
   </div>
   <div id="header">
     <span>Made with 💚 by <a href="https://github.com/DyLaNHurtado" target="_blank"> DyLaNHurtado</a></span> 
@@ -35,13 +35,30 @@ export default {
         completed: false,
       }
       ],
+      islightsOn:false
     }
   },
+  methods:{
+    changeDarkBg(){
+      this.islightsOn = !this.islightsOn;
+    }
+  }
 }
 </script>
 
 <style>
 
+#bg-dark{
+  background-color: #222222be;
+  position: absolute;
+  top: 0;
+  left: 0;
+  overflow: hidden;
+  height: 100vh;
+  width: 100vw;
+  z-index: 99;
+  
+}
 
 html{
   font-family: Arial, Helvetica, sans-serif;  

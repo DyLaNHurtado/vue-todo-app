@@ -1,12 +1,12 @@
 <template>
   <div class="container">       
-    <div class="todo-body checkbox" @click="completeTask(todo)" v-bind:class="{completed:todo.completed}" v-bind:checked="todo.completed">
+    <div class="todo-body checkbox" @click="this.completeTask" v-bind:class="{completed:todo.completed}" v-bind:checked="todo.completed">
         <input type="checkbox" name="check" v-bind:checked="todo.completed" id="checkbox">
         <span>{{todo.title}}</span>
     </div>
     <div class="todo-actions">
-        <button id="edit-button" @click="editTask(todoList,todo)"><EditIcon/>Edit</button>
-        <button id="delete-button" @click="deleteTask(todoList,todo)"><DeleteIcon/>Delete</button>
+        <button id="edit-button" @click="this.editTask"><EditIcon/>Edit</button>
+        <button id="delete-button" @click="this.deleteTask"><DeleteIcon/>Delete</button>
     </div>
   </div>
 </template>
@@ -25,24 +25,40 @@ export default {
         required: true
         },
         todoList:{
-            type: [],
-            required: true
+            type: Array,    
+        },
+        onEdit:{
+            type:Boolean,
+        }
+
+    },
+    data(){
+        return{
+            dataList:this.todoList,
+            task:this.todo,
         }
     },
   emits: ['openEditTask'],
   methods:{
-    completeTask(task){
-            task.isChecked = !task.isChecked
-            task.completed= !task.completed;
+    completeTask(){
+            if(!this.onEdit){
+                this.task.isChecked = !this.task.isChecked
+                this.task.completed= !this.task.completed;
+            }
+            
         },
-    deleteTask(todoList,task){
-        const index = todoList.indexOf(task);
+    deleteTask(){
+        if(!this.onEdit){
+        const index = this.dataList.indexOf(this.task);
         if(index!=-1){
-            todoList.splice(index,1);
+            this.dataList.splice(index,1);
+        }
         }
     },
-    editTask(todoList,task){
-        this.$emit('openEditTask',task.title,todoList.indexOf(task));
+    editTask(){
+        if(!this.onEdit){
+        this.$emit('openEditTask',this.task.title,this.dataList.indexOf(this.task));
+        }
     }
   }
 }

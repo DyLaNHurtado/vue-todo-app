@@ -19,9 +19,6 @@ export default {
     return {
         dataValue: this.inputValue
     }},
-    mounted(){
-        console.log(this.dataValue );
-    },
   emits: ['closeEdit'],
 
 }
@@ -30,47 +27,39 @@ export default {
 <style scoped>
     #edit{
         padding: 1em;
-        border-radius: 10px;
-        font-size: x-large;
         margin-bottom: 0.5em;
         margin: 0 1em;
         width: 100%;
     }
-    #edit:focus{
-        border:4px solid rgb(246, 171, 95);
-    }
+
     #ok-button{
-        font-size: x-large;
         padding: 1em;
         width: 15%;
-        border: 4px solid transparent;
+        border: 2px solid transparent;
         margin: 0;
-        border-radius: 100px;
+        background-color: #c3c3c3;
+        cursor: pointer;
     }
     #ok-button:hover{
         transition: all;
         transition-duration: 400ms;
-        border:4px solid rgb(255, 134, 34);
-        background-color: rgb(255, 210, 137);
+        border:2px solid rgba(43, 255, 106, 0.623);
+        background-color: rgba(13, 14, 12, 0.678);
+        color:whitesmoke;
     }
-    #ok-button:active{
-        border:4px solid rgb(0, 0, 0);
-        background-color: rgb(255, 232, 196);
-        scale: 1.1;
-    }
+
     #container-edit{
         flex-direction: column;
         padding: 0.2em 0;
         overflow: hidden;
         padding: 10px 15px;
-        flood-opacity: 30%;
-        border-radius: 10px;
-        background-color: #333;
+        box-shadow: 0px 11px 15px -7px rgba(0, 0, 0, 0.2), 0px 24px 38px 3px rgba(0, 0, 0, 0.14), 0px 9px 46px 8px rgba(0, 0, 0, 0.12);
+        background: white;
+        color: rgba(0, 0, 0, 0.87);
         border:2px solid white;
         position: absolute;
         width: 60%;
         z-index: 100;
-        box-shadow: 2px 2px 1px 1px black;
     }
     #input-container{
         display:flex;

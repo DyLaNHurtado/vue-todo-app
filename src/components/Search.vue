@@ -18,7 +18,7 @@ export default {
         AddIcon,
   },
   props: {
-    todoList: [],
+    todoList: Array,
   },
   methods:{
     addTodo:(todoList,inputSearch) => {

@@ -2,10 +2,10 @@
     <EditComponent v-if="onEdit" :inputValue="inputValue" @closeEdit="close"/>
     <div class="container">
         <div class="bar">
-            <SearchComponent v-bind:todoList="todoList"/>
+            <SearchComponent :todoList="todoList"/>
         </div>
-    <div v-bind:key="todo.id" v-for="todo in todoList">
-        <TaskComponent v-bind:todo="todo" @openEditTask="this.open"  v-bind:todoList="todoList"/>
+    <div :key="todo.id" v-for="todo in todoList">
+        <TaskComponent :todo="todo" :onEdit="onEdit" @openEditTask="this.open" :todoList="todoList"/>
     </div>
   </div>
 </template>
@@ -18,7 +18,7 @@ export default {
     name: "TodoComponent",
     
     props: {
-        todoList: [],
+        todoList: Array,
     },
     data(){
         return{onEdit:false,inputValue:"",index:0,editTodoList:this.todoList}
@@ -29,10 +29,12 @@ export default {
         close(newTitle){
             this.editTodoList[this.index].title=newTitle;
             this.onEdit= false;
+            this.$emit('turnLightsOn');
         },
         open(title,index){
             this.index=index;
             this.onEdit = true;
+            this.$emit('turnLightsOff');
             this.inputValue = title;
         }
     }       
