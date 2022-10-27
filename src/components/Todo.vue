@@ -5,7 +5,7 @@
             <SearchComponent v-bind:todoList="todoList"/>
         </div>
     <div v-bind:key="todo.id" v-for="todo in todoList">
-        <TaskComponent v-bind:todo="todo" @openEditTask="open(todo.title)"  v-bind:todoList="todoList"/>
+        <TaskComponent v-bind:todo="todo" @openEditTask="this.open"  v-bind:todoList="todoList"/>
     </div>
   </div>
 </template>
@@ -16,23 +16,24 @@ import SearchComponent from './Search.vue'
 import EditComponent from './Edit.vue'
 export default {
     name: "TodoComponent",
-    data(){
-        return{onEdit:false,inputValue:""}
-    },
+    
     props: {
         todoList: [],
+    },
+    data(){
+        return{onEdit:false,inputValue:"",index:0,editTodoList:this.todoList}
     },
     emits:['openEdit'],
     components: { TaskComponent,SearchComponent,EditComponent },
     methods:{
-        close(dataValue){
-            console.log(dataValue);
+        close(newTitle){
+            this.editTodoList[this.index].title=newTitle;
             this.onEdit= false;
         },
-        open(param){
+        open(title,index){
+            this.index=index;
             this.onEdit = true;
-            console.log(param+"holaaa");
-            this.inputValue = param;
+            this.inputValue = title;
         }
     }       
 }

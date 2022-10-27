@@ -1,5 +1,5 @@
 <template>
-  <div class="container" v-on:close-edit="(d)=>alert(d)">       
+  <div class="container">       
     <div class="todo-body checkbox" @click="completeTask(todo)" v-bind:class="{completed:todo.completed}" v-bind:checked="todo.completed">
         <input type="checkbox" name="check" v-bind:checked="todo.completed" id="checkbox">
         <span>{{todo.title}}</span>
@@ -30,23 +30,21 @@ export default {
         }
     },
   emits: ['openEditTask'],
-  setup (props, { emit }) {
-    const completeTask = (task) => {
+  methods:{
+    completeTask(task){
             task.isChecked = !task.isChecked
             task.completed= !task.completed;
-        }
-    const deleteTask = (todoList,task) => {
+        },
+    deleteTask(todoList,task){
         const index = todoList.indexOf(task);
         if(index!=-1){
             todoList.splice(index,1);
         }
+    },
+    editTask(todoList,task){
+        this.$emit('openEditTask',task.title,todoList.indexOf(task));
     }
-    const editTask = (todoList,task) => {
-        emit('openEditTask',todoList.indexOf(task));
-    }
-    return {completeTask,deleteTask,editTask}
-}
-
+  }
 }
 </script>
 
@@ -61,8 +59,20 @@ export default {
         overflow: hidden;
         padding-left: 0.5em;
         flood-opacity: 30%;
-        border-bottom:2px solid #c2c2c2;
+        border-bottom:1px solid #d6d6d6;
         padding: 0.3em 0;
+        position: relative;
+        z-index: 2;
+        -webkit-transition: all .1s;
+        -moz-transition: all .1s;
+        transition: all .1s;
+    }
+    .container:hover{
+        z-index: 3;
+        background-color: white;
+        -webkit-box-shadow: 0 0 14px rgba(34, 44, 55, 0.25);
+        -moz-box-shadow: 0 0 14px rgba(34, 44, 55, 0.25);
+        box-shadow: 0 0 14px rgba(34, 44, 55, 0.25);
     }
     .todo-actions{
         display: flex;
@@ -72,7 +82,6 @@ export default {
     .todo-body{
         width: 100%;
         border-radius: 10px;
-        margin-right: 20px;
         box-sizing: border-box;
         padding: 0.5em 0.5em;
         cursor: pointer;
@@ -92,7 +101,7 @@ export default {
     }
     
     #delete-button{
-        background: linear-gradient(to bottom, #f06246 , #d14584);
+        background: #db756d;
         border: 2px solid #c2c2c2;
         cursor: pointer;
         transition-duration: 200ms;
@@ -100,6 +109,7 @@ export default {
     #delete-button:hover{
         background: #333333;
         color: rgb(255, 135, 135);
+        fill:rgb(255, 135, 135);
         border: 2px solid #f35
     }
 
@@ -109,7 +119,7 @@ export default {
         background-color: #a5a5a5;
     }
     #edit-button{
-        background: linear-gradient(to bottom ,#f5e941,#188d4f);
+        background: #65b88c;
         border: 2px solid #c2c2c2;
         cursor: pointer;
         transition-duration: 200ms;

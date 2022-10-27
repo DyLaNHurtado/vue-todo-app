@@ -2,7 +2,7 @@
   
   <div id="main-container"> 
     <h2>Vue-Todo-App</h2>
-    <TodoComponent v-bind:todoList="copyTodos"/>
+    <TodoComponent  :todoList="todos"/>
   </div>
   <div id="header">
     <span>Made with 💚 by <a href="https://github.com/DyLaNHurtado" target="_blank"> DyLaNHurtado</a></span> 
@@ -11,7 +11,6 @@
 
 <script>
 import TodoComponent from './components/Todo.vue'
-
 
 export default {
   name: 'App',
@@ -36,12 +35,8 @@ export default {
         completed: false,
       }
       ],
-      copyTodos: []
     }
   },
-  created(){
-    this.copyTodos =  this.todos;
-  }
 }
 </script>
 
